@@ -3,7 +3,8 @@ library(httr)
 library(jsonlite)
 
 ## set a cookie manually
-##      I copied this from the network request panel of the  chrome developer tools
+##      I copied this from the network request panel of the  chrome developer tools.
+# might do this again if cookie expired
 cookie <- "OmniID=c_7f622dc5a8b947e3924a5eb6d3caf99a; MC1=GUID=52656f787d3a3f4791347e80f421a588&HASH=786f&LV=201406&V=4&LU=1401615211750; A=I&I=AxUFAAAAAADSBgAAe20GWlNHN6xwMaGKZCwILQ!!&V=4; MUID=06D69B5D62C561901A079D1466C562BF; s_sq=msnportalbetarmc%3D%2526pid%253DWeb%252520N-Gram%252520-%252520Microsoft%252520Research%2526pidt%253D1%2526oid%253Dhttp%25253A//weblm.research.microsoft.com/info/rest.html%2526ot%253DA; s_cc=true"
 cc <- sapply(strsplit(cookie,"; ")[[1]], function(x){
         sapply(URLdecode(x)[[1]], function(p){strsplit(p,"=")[1]})
