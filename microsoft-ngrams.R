@@ -18,11 +18,13 @@ utok <- "u=aed4a377-my-user-token"
 catalog <- "http://weblm.research.microsoft.com/rest.svc/bing-body/2013-12/5"
 op <-"gen"
 format <- "format=json"
-qry <- URLencode(str)
 
 str <- "time to take a"
-url1 <- sprintf("%s/%s?%s&%s&%s", catalog, op,  utok, qry, format )
-url1
+qry <- URLencode(str)
+
+
+(url1 <- sprintf("%s/%s?%s&%s&%s", catalog, op,  utok, qry, format ))
+
 #http://weblm.research.microsoft.com/rest.svc/bing-body/2013-12/5/gen?u=aed4a377-3db5-4197-a435-6ea6fccd591d&p=to%20take%20a&format=json
 #http://weblm.research.microsoft.com/rest.svc/bing-body/2013-12/5/gen?u=aed4a377-3db5-4197-a435-6ea6fccd591d&p=and+settle+the+&format=json
 resp <- fromJSON(rawToChar((GET(url1))$content))
