@@ -1,4 +1,9 @@
 ## query the microsoft ngram viewer with R
+#
+#
+#  Update Nov 2017: This  probably no longer works because Microsoft has changed the endpoint of the webservice.
+#  I think the API has been removed out out reseearch/beta, and was rebranded.
+#
 library(httr)
 library(jsonlite)
 
@@ -26,8 +31,8 @@ qry <- URLencode(str)
 
 (url1 <- sprintf("%s/%s?%s&%s&%s", catalog, op,  utok, qry, format ))
 
-#http://weblm.research.microsoft.com/rest.svc/bing-body/2013-12/5/gen?u=aed4a377-3db5-4197-a435-6ea6fccd591d&p=to%20take%20a&format=json
-#http://weblm.research.microsoft.com/rest.svc/bing-body/2013-12/5/gen?u=aed4a377-3db5-4197-a435-6ea6fccd591d&p=and+settle+the+&format=json
+#http://weblm.research.microsoft.com/rest.svc/bing-body/2013-12/5/gen?u=aed4a377-3db5...&p=to%20take%20a&format=json
+#http://weblm.research.microsoft.com/rest.svc/bing-body/2013-12/5/gen?u=aed4a377-3db5...&p=and+settle+the+&format=json
 resp <- fromJSON(rawToChar((GET(url1))$content))
 resp <- transform(data.frame(nextword= resp$words, prob=resp$probabilities))
 
